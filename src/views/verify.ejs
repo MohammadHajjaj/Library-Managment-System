@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate')%>
+	<div class="container">
+		<h1>Email Verification</h1>
+		<p>
+			A Verification code has been sent to your email, Please enter it down below to procceed.
+		</p>
+		<div>
+			<form action="/verify" method="POST" id="verification" class="input-group input-group-lg">
+				<input type="text" class="form-control input-lg" id="verification_code" name="verification_code"
+					placeholder="Enter the code sent to your email" required />
+				<span class="input-group-btn">
+					<button class="btn btn-primary btn-lg" type="submit">Verify
+					</button>
+				</span>
+			</form>
+		</div>

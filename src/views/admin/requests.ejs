@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate')%>
+
+  <% if(users.length===0) { %>
+    <h1> No pending subscriptions </h1>
+    <%} %>
+
+      <section id="users">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Users</h4>
+                </div>
+                <table class="table table-striped">
+                  <thead class="thead-inverse">
+                    <tr>
+                      <th>Name</th>
+                      <th>User name</th>
+                      <th>Email</th>
+                      <th>Subscribtion</th>
+
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <% users.forEach(user=> { %>
+                      <%if (user.isAdmin) return; %>
+                        <tr>
+                          <td>
+                            <%=user.fName + " " + user.lName%>
+                          </td>
+                          <td><a href="/admin/users/profile/<%=user._id%>" title="Visit this user">
+                              <%=user.username%>
+                            </a></td>
+                          <td>
+                            <%=user.email%>
+                          </td>
+                          <td>
+                            <%=user.isSubscribed%>
+                          </td>
+                          <td>
+
+                            <a href="/admin/users/subrequests/<%=user._id%>" title="Add Subscription"
+                              class="btn btn-sm btn-success">
+                              <i class="fa fa-address-card"> Add Subscription</i>
+                            </a>
+
+                          </td>
+                        </tr>
+                        <% }); %>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

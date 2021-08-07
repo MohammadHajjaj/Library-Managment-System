@@ -1,0 +1,16 @@
+<% layout('./layouts/boilerplate')%>
+	<div class="container">
+		<h1>Student Subscription</h1>
+		<p>
+			Your Subscription will be pending untill cash payment has been recieved.
+		</p>
+		<div>
+			<form action="/confirm-student" method="POST">
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+					<label class="form-check-label" for="exampleCheck1">I agree</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Confirm</button>
+
+			</form>
+		</div>

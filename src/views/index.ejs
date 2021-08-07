@@ -1,0 +1,225 @@
+<% layout('layouts/boilerplate')%>
+    <section class="slideshow">
+        <div class="container w-50">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="/">
+                            <img src="https://images.unsplash.com/photo-1588580000645-4562a6d2c839?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Welcome to our Library</h5>
+                            </div>
+                    </div>
+                    </a>
+                    <div class="carousel-item">
+                        <a href="/books">
+                            <img src="https://images.unsplash.com/photo-1549383028-df014fa3a325?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                                class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Browse all books </h5>
+                                <p>with a big collection of books and genres.</p>
+                            </div>
+                    </div>
+                    </a>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <hr>
+            <div>
+                <h1 class="text-center">
+                    Most selling
+                </h1>
+            </div>
+
+            <div class="row slideshow">
+                <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active carousel-item">
+                            <div class="row">
+                                <div class="col-lg-3"><a href="/book/<%=books[0]._id%>" class="thumbnail"><img
+                                            src="<%=books[0].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[0].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[0].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[0].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[0].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[1]._id%>" class="thumbnail"><img
+                                            src="<%=books[1].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[1].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[1].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[1].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[1].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[2]._id%>" class="thumbnail"><img
+                                            src="<%=books[2].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[2].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[2].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[2].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[2].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[3]._id%>" class="thumbnail"><img
+                                            src="<%=books[3].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[3].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[4].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[4].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[4].stock%></small>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-lg-3"><a href="/book/<%=books[4]._id%>" class="thumbnail"><img
+                                            src="<%=books[4].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[4].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[4].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[4].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[4].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[5]._id%>" class="thumbnail"><img
+                                            src="<%=books[5].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[5].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[5].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[5].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[5].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[6]._id%>" class="thumbnail"><img
+                                            src="<%=books[6].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[6].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[6].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[6].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[6].stock%></small>
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-3"><a href="/book/<%=books[7]._id%>" class="thumbnail"><img
+                                            src="<%=books[7].image%>" alt="Image" style="max-width:100%;"></a>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Title : <%=books[7].title%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Author : <%=books[7].author%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">Category : <%=books[7].category%></small>
+                                    </p>
+                                    <p class="text-muted">
+                                        <small class="text-muted">In stock : <%=books[7].stock%></small>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--.row-->
+                        </div>
+
+
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </section>

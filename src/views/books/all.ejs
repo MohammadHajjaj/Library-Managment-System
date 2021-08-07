@@ -1,0 +1,71 @@
+<% layout('layouts/boilerplate')%>
+	<div id="search_bar" class=" bg-light d-flex ">
+
+		<form action="/books" method="POST" class="d-flex mx-auto">
+
+			<div>
+				<input name="searchValue" type="text" class="form-control " placeholder="Search Books">
+			</div>
+			<button class="btn bg-dark text-white btn-block fas fa-search px-3 my-1" type="submit"></button>
+
+		</form>
+
+	</div>
+
+	<section id="browse_books" class="mt-5">
+		<div class="container">
+
+
+			<div class="row">
+				<% if (books.length===0) { %>
+					<h2>No books matching the search criteria</h2>
+					<%} %>
+						<% for(var i=0; i < books.length; i++) { %>
+							<div class="card col-md-3 text-center">
+								<div class="card-body">
+									<a href="/book/<%=books[i]._id%>" class="thumbnail"><img src="<%=books[i].image%>"
+											alt="Image" style="max-width:100%;"></a>
+									<h5 class="card-title">
+										<%=books[i].title%>
+									</h5>
+									<p class="text-muted">
+										<small class="text-muted">Author : <%=books[i].author%></small>
+									</p>
+									<p class="text-muted">
+										<small class="text-muted">Category : <%=books[i].category%></small>
+									</p>
+									<p class="text-muted">
+										<small class="text-muted">In stock : <%=books[i].stock%></small>
+									</p>
+
+
+									<% if(currentUser && books[i].stock> 0) { var match = false%>
+										<% currentUser.borrowedBooks.forEach(book_info=> { %>
+											<% if(book_info._id.equals(books[i]._id)) { %>
+												<a href="#" class="btn btn-xs btn-warning disabled" role="button"
+													aria-disabled="true">Borrowed!</a>
+												<a href="/user/dashboard" class="btn btn-xs btn-success"
+													role="button">Return/Renew</a>
+												<% match=true; } %>
+													<% }) %>
+
+														<% if(!match) {%>
+															<form
+																action="/books/<%=books[i]._id%>/borrow/<%=currentUser._id%>"
+																method="POST" class="d-inline">
+																<input class="btn bg-dark text-white btn-block"
+																	type="submit" value="Borrow">
+															</form>
+															<% } %>
+																<% } %>
+																	<form action="/book/<%=books[i]._id%>" method="get"
+																		class="d-inline">
+																		<input class="btn bg-dark text-white btn-block"
+																			type="submit" value="Details">
+																	</form>
+								</div>
+							</div>
+							<% } %>
+			</div>
+		</div>
+	</section>

@@ -1,0 +1,128 @@
+<% layout('./layouts/boilerplate')%>
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <section class="memberships">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 heading">
+          <h2>Memberships</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tab-content responsive">
+            <div class="tab-pane active" id="full" role="tabpanel">
+              <div class="row mt-4">
+                <div class="col-sm-6 col-md-6 package_wrapper">
+                  <div class="package border border-dark">
+                    <div class="package_info">
+                      <h3>Student</h3>
+                      <p>Our Student membership.</p>
+                    </div>
+                    <div class="prices">
+                      <div class="price_pa">5 JOD<span>/lifetime</span></div>
+                    </div>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        data-bs-display="static" aria-expanded="false">
+                        Subscribe
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                        <li><button class="dropdown-item" type="button" id="paypal_button">Credit Card</button></li>
+                        <li><button class="dropdown-item" type="button"
+                            onclick="window.location.href='/confirm-student'">Cash</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-6 col-md-6 package_wrapper">
+                  <div class="package border border-dark">
+                    <div class="package_info">
+                      <h3>Standard</h3>
+                      <p>Our Standard membership.</p>
+                    </div>
+                    <div class="prices">
+                      <div class="price_pa">10 JOD<span>/lifetime</span></div>
+                    </div>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        data-bs-display="static" aria-expanded="false">
+                        Subscribe
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                        <li><button class="dropdown-item" type="button" id="paypal_button2">Credit Card</button></li>
+                        <li><button class="dropdown-item" type="button"
+                            onclick="window.location.href='/confirm-standard'">Cash</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <script type="text/javascript">
+                // Create an instance of the Stripe object with your publishable API key
+                var stripe = Stripe('pk_test_51ItqnLKSM9aZj3T2uHuYY5DIWFl1YQUvZ5we6SmfbYCeFmTeYekjEwTaow3HOi0LXowbZpMrSYhMWey0MS1JmkLa00apAqefEh');
+                var checkoutButton = document.getElementById('paypal_button');
+
+                checkoutButton.addEventListener('click', function () {
+                  // Create a new Checkout Session using the server-side endpoint you
+                  // created in step 3.
+                  fetch('/create-checkout-session', {
+                    method: 'POST',
+                  })
+                    .then(function (response) {
+                      return response.json();
+                    })
+                    .then(function (session) {
+                      return stripe.redirectToCheckout({ sessionId: session.id });
+                    })
+                    .then(function (result) {
+                      // If `redirectToCheckout` fails due to a browser or network
+                      // error, you should display the localized error message to your
+                      // customer using `error.message`.
+                      if (result.error) {
+                        alert(result.error.message);
+                      } 0
+                    })
+                    .catch(function (error) {
+                      console.error('Error:', error);
+                    });
+                });
+              </script>
+              <script type="text/javascript">
+                // Create an instance of the Stripe object with your publishable API key
+                var stripe = Stripe('pk_test_51ItqnLKSM9aZj3T2uHuYY5DIWFl1YQUvZ5we6SmfbYCeFmTeYekjEwTaow3HOi0LXowbZpMrSYhMWey0MS1JmkLa00apAqefEh');
+                var checkoutButton = document.getElementById('paypal_button2');
+
+                checkoutButton.addEventListener('click', function () {
+                  // Create a new Checkout Session using the server-side endpoint you
+                  // created in step 3.
+                  fetch('/create-checkout-session2', {
+                    method: 'POST',
+                  })
+                    .then(function (response) {
+                      return response.json();
+                    })
+                    .then(function (session) {
+                      return stripe.redirectToCheckout({ sessionId: session.id });
+                    })
+                    .then(function (result) {
+                      // If `redirectToCheckout` fails due to a browser or network
+                      // error, you should display the localized error message to your
+                      // customer using `error.message`.
+                      if (result.error) {
+                        alert(result.error.message);
+                      } 0
+                    })
+                    .catch(function (error) {
+                      console.error('Error:', error);
+                    });
+                });
+              </script>
+
+  </section>

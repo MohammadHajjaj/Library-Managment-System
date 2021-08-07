@@ -1,0 +1,67 @@
+<% layout('./layouts/boilerplate')%>
+
+  <section id="home" class="mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="font-weight-bold text-center">Current Subscription : <%=user.isSubscribed%> approval
+            </h3>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <% if(user.borrowedBooks.length===0){%>
+    <h5 class="text-center mt-5">You don't have any borrowed books yet!
+    </h5>
+    <%} else{%>
+
+      <section class="mt-4 py-3">
+        <div class="container">
+          <div class="col mx-auto">
+
+            <div class="card">
+              <table class="table table-striped">
+                <thead class="thead-inverse">
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Issue date</th>
+                    <th>Return date</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% user2.forEach(book=> { %>
+                    <tr>
+                      <td>
+                        <%=book.bookDetails.title%>
+                      </td>
+                      </td>
+                      <td>
+                        <%=book.bookDetails.author%>
+                      </td>
+                      <td>
+                        <%=book.issueDate.toDateString()%>
+                      </td>
+                      <td>
+                        <%=book.returnDate.toDateString()%>
+                      </td>
+                      <td>
+
+                        <form action="/books/<%=book.bookDetails._id%>/return" method="POST" class="d-inline">
+                          <input class="btn btn-xs btn-info" type="submit" value="Return">
+                        </form>
+                      </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%} %>

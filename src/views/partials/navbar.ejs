@@ -1,0 +1,164 @@
+<%- include('../partials/login_and_signup')%>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="/"> <img
+                    src="https://i.pinimg.com/236x/44/a3/fd/44a3fd7c72db93b9e50d95f67c35792a--library-logo-school-logo.jpg"
+                    id="icon" alt="User Icon" style="max-width: 150px;">
+                <span class="text-uppercase font-weight-bold">LMS</span>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+            </button>
+            <% if(!currentUser){%>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/books">Browse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/subscribe">Subscribe</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <form action="/books" method="POST" class="d-flex">
+                            <input name="searchValue" class="form-control me-2 " type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn bg-dark text-white btn-block btn btn-outline-light"
+                                type="submit">Search</button>
+                        </form>
+                    </div>
+
+
+                    <% if(!currentUser) {%>
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="Open-login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="Open-register">Signup</a>
+                            </li>
+
+
+                        </ul>
+                        <% } else {%>
+                            <ul class="navbar-nav mr-auto ">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <%= currentUser.username %>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="/user/dashboard">Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="/logout">Sign Out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <% } %>
+                                <% } else if(currentUser.isAdmin){%>
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav mx-auto">
+                                            <li class="nav-item active">
+                                                <a class="nav-link" href="/admin/books">Books</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/admin/books/add">Add Book</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/admin/subrequests">Subscription Requests</a>
+                                            </li>
+
+                                        </ul>
+                                        <div>
+
+                                            <ul class="navbar-nav mr-auto ">
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <%= currentUser.username %>
+                                                    </a>
+
+                                                    <ul class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="navbarDropdown">
+                                                        <li><a class="dropdown-item" href="/admin/logout">Sign Out</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+
+
+                                            <% } else{%>
+                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                    <ul class="navbar-nav mx-auto">
+                                                        <li class="nav-item active">
+                                                            <a class="nav-link" href="/">Home</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/books">Browse</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/subscribe">Subscribe</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div>
+                                                        <form action="/books" method="POST" class="d-flex">
+                                                            <input name="searchName" class="form-control me-2 "
+                                                                type="search" placeholder="Search" aria-label="Search">
+                                                            <button
+                                                                class="btn bg-dark text-white btn-block btn btn-outline-light"
+                                                                type="submit">Search</button>
+                                                        </form>
+                                                    </div>
+
+
+
+                                                    <% if(!currentUser) {%>
+
+                                                        <ul class="navbar-nav mr-auto">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#" id="Open-login">Login</a>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#"
+                                                                    id="Open-register">Signup</a>
+                                                            </li>
+
+
+                                                        </ul>
+                                                        <% } else {%>
+                                                            <ul class="navbar-nav mr-auto ">
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle" href="#"
+                                                                        id="navbarDropdown" role="button"
+                                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <%= currentUser.username %>
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu dropdown-menu-end"
+                                                                        aria-labelledby="navbarDropdown">
+                                                                        <li><a class="dropdown-item"
+                                                                                href="/user/dashboard">Dashboard</a>
+                                                                        </li>
+                                                                        <li><a class="dropdown-item" href="/logout">Sign
+                                                                                Out</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+
+                                                            <% } %>
+
+                                                                <% } %>
+
+
+                                                </div>
+                                        </div>
+    </nav>
