@@ -13,6 +13,7 @@ A simple LMS created with NodeJS , Mongodb , Ejs
 - Login and Signup authentication with passport
 - Email verification for signed up users using Twilio & SENDGRID API
 - Server-Side form validations using JOI
+- Routes validations
 - Subscription System using STRIPE API
 - Different borrow restriction depending on the current subscription type
 - Browse and search books by Title (Working on a more advanced search!)
