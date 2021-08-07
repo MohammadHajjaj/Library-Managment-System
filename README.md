@@ -1,5 +1,5 @@
 # Library-Managment-System
-A simple LMS created with NodeJS , Mongodb , Ejs  
+A simple LMS created with NodeJS , Mongodb , EJS  
 
 ## Live Website
 **[hajjaj-lms.herokuapp.com](https://hajjaj-lms.herokuapp.com/)**
