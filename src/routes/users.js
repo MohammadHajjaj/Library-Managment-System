@@ -49,33 +49,24 @@ router.get('/verify', (req, res) => {
 router.post('/register', validateUser, async (req, res, next) => {
     const { fName, lName, email, phoneNumber, username, password } = req.body.users;
     const user = new User({ fName, lName, email, phoneNumber, username });
-    const registeredUser = await User.register(user, password, (err, user) => {
-        if (err) {
-            req.flash('error', err.message);
-            res.redirect('/')
-        }
-    });
+    const registeredUser = await User.register(user, password);
     req.login(registeredUser, err => {
-        if (err) return req.flash('error', err.message);
+        if (err) return next(err);
         req.flash('success', 'Registered Successfully, Please verify your email to proceed!');
 
-        client.verify.services(serviceId)
+        client.verify.services(process.env.serviceId)
             .verifications
             .create({ to: req.user.email, channel: 'email' })
             .then(verification => console.log(verification.sid));
 
         res.redirect('/verify');
     })
-
-
-
-
 })
 
 router.post('/verify', isLoggedIn, async (req, res) => {
     const { verification_code } = req.body
     try {
-        client.verify.services(serviceId)
+        client.verify.services(process.env.serviceId)
             .verificationChecks
             .create({ to: req.user.email, code: verification_code })
             .then(async verification_check => {
