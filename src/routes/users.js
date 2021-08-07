@@ -3,8 +3,8 @@ const passport = require("passport")
 const router = express.Router()
 const Stripe = require('stripe');
 const { isVerified, isLoggedIn, validateUser } = require("../middleware");
-const accountSid = "AC168fe5d7f7067f06ca42a2a7098c446f";
-const authToken = "e609ca769227a898e5d2c8eef3342279";
+const accountSid = process.env.accountSid;
+const authToken = process.env.authToken;
 const client = require('twilio')(accountSid, authToken);
 
 const User = require("../models/users")
@@ -59,7 +59,7 @@ router.post('/register', validateUser, async (req, res, next) => {
         if (err) return req.flash('error', err.message);
         req.flash('success', 'Registered Successfully, Please verify your email to proceed!');
 
-        client.verify.services('VA758873ecc9e16ade3f935c5b59985c2f')
+        client.verify.services(serviceId)
             .verifications
             .create({ to: req.user.email, channel: 'email' })
             .then(verification => console.log(verification.sid));
@@ -75,7 +75,7 @@ router.post('/register', validateUser, async (req, res, next) => {
 router.post('/verify', isLoggedIn, async (req, res) => {
     const { verification_code } = req.body
     try {
-        client.verify.services('VA758873ecc9e16ade3f935c5b59985c2f')
+        client.verify.services(serviceId)
             .verificationChecks
             .create({ to: req.user.email, code: verification_code })
             .then(async verification_check => {
