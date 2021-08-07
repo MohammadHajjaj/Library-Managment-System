@@ -27,7 +27,8 @@ A simple LMS created with NodeJS , Mongodb , EJS
 2. Books filtering by category, ISBN
 3. Advanced Book searching 
 4. Add Tests
-5. rewrite the entire app using ReactJS as a frontend 
+5. Refactor code to use controllers and services
+6. rewrite the entire app using ReactJS as a frontend 
 
 ## Installation
 
