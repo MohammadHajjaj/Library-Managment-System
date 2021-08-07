@@ -1,4 +1,4 @@
-const ExpressError = require('./ExpressError');
+const ExpressError = require('./expressError');
 const { sendVerificationEmail } = require("../emails/account")
 const Joi = require('joi');
 const { number } = require('joi');
